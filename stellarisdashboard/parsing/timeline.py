@@ -1074,10 +1074,14 @@ class LeaderProcessor(AbstractGamestateDataProcessor):
         return leader
 
     def get_leader_name(self, leader_dict):
-        first_name = leader_dict["name"]["first_name"]
-        last_name = leader_dict["name"].get("second_name", "")
-        leader_name = f"{first_name} {last_name}".strip()
+        if "name" in leader_dict:
+            first_name = leader_dict["name"]["first_name"]
+            last_name = leader_dict["name"].get("second_name", "")
+            leader_name = f"{first_name} {last_name}".strip()
+        else:
+            leader_name = "No name"
         return leader_name
+    
 
     def _update_leader_attributes(self, leader: datamodel.Leader, leader_dict):
         if "pre_ruler_class" in leader_dict:

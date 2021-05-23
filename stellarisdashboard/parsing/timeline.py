@@ -1075,7 +1075,7 @@ class LeaderProcessor(AbstractGamestateDataProcessor):
 
     def get_leader_name(self, leader_dict):
         if "name" in leader_dict:
-            first_name = leader_dict["name"]["first_name"]
+            first_name = leader_dict["name"].get("first_name", "")
             last_name = leader_dict["name"].get("second_name", "")
             leader_name = f"{first_name} {last_name}".strip()
         else:

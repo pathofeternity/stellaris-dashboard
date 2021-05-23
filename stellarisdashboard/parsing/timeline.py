@@ -1081,7 +1081,6 @@ class LeaderProcessor(AbstractGamestateDataProcessor):
         else:
             leader_name = "No name"
         return leader_name
-    
 
     def _update_leader_attributes(self, leader: datamodel.Leader, leader_dict):
         if "pre_ruler_class" in leader_dict:
